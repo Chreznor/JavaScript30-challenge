@@ -69,14 +69,15 @@
 <audio data-key="77" src="sounds/moo.wav"></audio>
 
 <script>
-    window.addEventListener('keydown', function(e){
+
+    function playSound(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
       if(!audio) return;
       audio.currentTime = 0;
       audio.play();
       key.classList.add('playing');
-    });
+    }
 
     function removeTransition(e) {
       if (e.propertyName !== "transform") return;
@@ -84,8 +85,10 @@
     }
 
     const key = document.querySelectorAll('.key');
-    key.forEach(key => key.addEventListener('transitionend', removeTransition)
-  );
+    key.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+    window.addEventListener('keydown', playSound);
+
 </script>
 </body>
 </html>
