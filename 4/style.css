@@ -1,0 +1,17 @@
+html {
+	font-family: 'Indie Flower', cursive;
+	color: white;
+	background-color: #193549;
+	overflow: hidden;
+}
+
+.center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+p {
+	font-size: 40px;
+}
