@@ -3,13 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 2</title>
-  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="inbox">
+    <div class="item">
+      <input type="checkbox">
+      <p>Start with the small things</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Leatn HTML and CSS first</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Once You can make a website</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Learn about JavaScript</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Find a computer science course</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>It's important to think as a programmer</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>To have an idea about how things work</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Build your first program</p>
+    </div>
+    <div class="item">
+      <input type="checkbox">
+      <p>Don't panic, You can probably do this</p>
+    </div>
+  </div>
 
-  
   <script>
+    const checkbox = document.querySelectorAll('.inbox input[type="checkbox"]');
+    let lastChecked;
+    let inBetween = false;
+
+    function handleCheck(e) {
+      if (e.shiftKey && this.checked) {
+      checkbox.forEach(checkbox => {
+        console.log(checkbox);
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+        }
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      })
+      };
+      lastChecked = this;
+    }
+
+    checkbox.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+    console.log(checkbox);
+
+
+
+
 
   </script>
 </body>
