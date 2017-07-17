@@ -1,0 +1,96 @@
+html, body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height:100vh;
+}
+
+  *, *:before, *:after {box-sizing: inherit; }
+
+body {
+  background-image: url('1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Futura,"Trebuchet MS",Arial,sans-serif
+}
+
+.logo-container {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  margin: -100px 0 0 -100px;
+  top: 20%;
+  left: 50%;
+  background-color: rgba(107, 116, 130, 0.7);
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #575f6b;
+  margin-bottom: 50px;
+}
+
+.logo-container img {
+  position: absolute;
+  margin: -75px 0 0 -75px;
+  top: 50%;
+  left: 50%;
+}
+
+.wrapper {
+  padding: 20px;
+  max-width: 350px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  margin: 0;
+  font-weight: 200;
+}
+
+.plates {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+
+.plates li {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding: 10px 0;
+  font-weight: 100;
+  display: flex;
+}
+
+.plates label {
+  flex:1;
+  cursor: pointer;
+
+}
+
+.plates input {
+  display: none;
+}
+
+.plates input + label:before {
+  content: '⬜️';
+  margin-right: 10px;
+}
+
+.plates input:checked + label:before {
+  content: '🌮';
+}
+
+.add-items {
+  margin-top: 20px;
+}
+
+.add-items input {
+  padding:10px;
+  outline:0;
+  border:1px solid rgba(0,0,0,0.1);
+}
