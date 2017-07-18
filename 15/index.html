@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="https://use.fontawesome.com/dbd90a0166.js"></script>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
 </head>
 <body>
   <div class="logo-container">
-    <img src="logo2.png" width="150px" height="150px">
+    <i class="fa fa-cutlery" aria-hidden="true"></i>
+    <!-- <img src="logo2.png" width="150px" height="150px"> -->
   </div>
 
   <div class="wrapper">
@@ -21,13 +23,18 @@
     <form class="add-items">
       <input type="text" name="item" placeholder="Item name" required>
       <input type="submit" value="+ Add item">
+      <div class="divider"></div>
+      <input type="button" name="toggle-all" value="Toggle All">
+      <input type="button" name="delete-all" value="Delete All">
     </form>
   </div>
 
   <script>
     const addItems = document.querySelector('.add-items');
     const itemsList = document.querySelector('.plates');
-    const items = JSON.parse(localStorage.getItem('items')) || [];
+    let items = JSON.parse(localStorage.getItem('items')) || [];
+    const deleteAllBtn = document.querySelector('input[name="delete-all"]');
+    const toggleAllBtn = document.querySelector('input[name="toggle-all"]');
 
     function addItem(e) {
       e.preventDefault();
@@ -59,11 +66,43 @@
       const index = el.dataset.index;
       items[index].done = !items[index].done;
       localStorage.setItem('items', JSON.stringify(items));
-      populateList(items, itemList);
+      populateList(items, itemsList);
+    }
+
+    function deleteAll(e) {
+      items = [];
+      localStorage.setItem('items', JSON.stringify(items));
+      populateList(items, itemsList);
+    }
+
+    function toggleAll() {
+      const totalChecked = items.length;
+      let itemsChecked = 0;
+
+
+      items.forEach((item) => {
+       if (item.done === true) {
+        itemsChecked++
+      }});
+
+      if (itemsChecked != totalChecked) {
+        items.forEach((item) => {
+          item.done = true;
+        })
+      } else {
+        items.forEach((item) => {
+          item.done = false;
+        })
+      }
+      
+      localStorage.setItem('items', JSON.stringify(items));
+      populateList(items, itemsList);
     }
 
     addItems.addEventListener('submit', addItem);
     itemsList.addEventListener('click', toggleDone);
+    deleteAllBtn.addEventListener('click', deleteAll);
+    toggleAllBtn.addEventListener('click', toggleAll);
     populateList(items, itemsList);
 
   </script>

@@ -25,17 +25,19 @@ body {
   margin: -100px 0 0 -100px;
   top: 20%;
   left: 50%;
+  display: flex;
   background-color: rgba(107, 116, 130, 0.7);
   border-radius: 50%;
   box-shadow: 1px 1px 1px #575f6b;
   margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo-container img {
-  position: absolute;
-  margin: -75px 0 0 -75px;
-  top: 50%;
-  left: 50%;
+.logo-container i {
+  font-size: 60px;
+  color: #edf0f7;
+
 }
 
 .wrapper {
@@ -93,4 +95,14 @@ h2 {
   padding:10px;
   outline:0;
   border:1px solid rgba(0,0,0,0.1);
+}
+
+.add-items input[type="button"] {
+  margin-top: 20px;
+  width: 140px;
+}
+
+.divider {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  margin-top: 10px;
 }
