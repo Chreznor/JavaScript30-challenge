@@ -1,70 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Sort Without Articles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+  <title>JavaScript30</title>
 </head>
 <body>
+	<div class="background">
+		
+	</div>
+	
+	<ul class="list">
+		<li id="header">Sorted Mountains</li>
+	</ul>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
-      background-size: cover;
-      display: flex;
-      align-items: center;
-      min-height: 100vh;
-    }
+	<script>
+		const mountains = ['Mount McKinley', 'Mount Saint Elias', 'Mount Foraker', 'Mount Bona', 'Mount Blackburn', 'Mount Sanford', 'Fairweather Mountain', 'Mount Hubbard', 'University Peak', 'Mount Harvard', 'La Plata Peak', 'Blanca Peak'];
+		const list = document.querySelector('.list');
 
-    #bands {
-      list-style: inside square;
-      font-size: 20px;
-      background: white;
-      width: 500px;
-      margin: auto;
-      padding: 0;
-      box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
-    }
-    #bands li {
-      border-bottom: 1px solid #efefef;
-      padding: 20px;
-    }
-    #bands li:last-child {
-      border-bottom: 0;
-    }
+		function removeMount(mountain) {
+			return mountain.replace(/^(mount |la )/i, '');
+		}
 
-    a {
-      color: #ffc600;
-      text-decoration: none;
-    }
+		const sortedMountains = mountains.sort((a,b) => removeMount(a)>removeMount(b) ? 1 : -1);
 
-  </style>
-
-  <ul id="bands"></ul>
-
-<script>
-var bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
-
-function strip(bandName) {
-  return bandName.replace(/^(a |the |an )/i, '')
-}
-
-const sortedBands = bands.sort(function(a,b) {
-  if (strip(a) > strip(b)) {
-    return 1;
-  } else {
-    return -1;
-  }
-})
-
-// const sortedBands = bands.sort((a,b) => strip(a)>strip(b) ? 1 : -1);
-
-document.querySelector('#bands').innerHTML = sortedBands.map(band => `<li>${band}</li>`).join('');
+		list.innerHTML = `<li id="header">Sorted Mountains</li>` + sortedMountains.map(mountain => `<li>-- ${mountain} --</li>`).join('');
 
 
-
-</script>
-
+	</script>
 </body>
 </html>
