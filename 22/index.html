@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Bellefair" rel="stylesheet">
+  <title>Follow Along Links</title>
+</head>
+<body>
+	<nav>
+		<ul class="menu">
+			<li><a href="#">First</a></li>
+			<li><a href="#">Second</a></li>
+			<li><a href="#">Third Tab</a></li>
+			<li><a href="#">Fourth</a></li>
+			<li><a href="#">Fifth Tab</a></li>
+		</ul>
+	</nav>
+
+	<div class="wrapper">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <a href="">Laboriosam</a> omnis neque modi debitis, reiciendis, maxime dicta esse iusto aliquid expedita perspiciatis beatae! Provident officiis, aperiam molestias <a href="">sapiente</a>, nesciunt non, animi assumenda culpa facere qui odio quae natus <a href="">exercitationem</a>.</p>
+		<p>Officiis nisi natus vel in incidunt adipisci necessitatibus neque similique <a href="">suscipit </a>tenetur temporibus nostrum molestiae itaque eveniet consequuntur iure unde laborum ea, quisquam laudantium velit nulla, est <a href="">suscipit </a>voluptatibus, earum. Et debitis, aliquid dolorum. Voluptatem dolorum vel perferendis sit <a href="">suscipit </a>dicta sed nostrum ratione doloribus animi. Tenetur dolor accusamus sapiente.</p>
+		<p>Enim dolores, eum mollitia ad, veritatis molestias inventore, quos provident nam <a href="">suscipit </a>rerum deserunt, <a href="">suscipit </a>blanditiis! Iste ipsa rerum, odit! Voluptatibus cumque, provident. Tempore fuga, possimus a voluptatibus, cupiditate cumque alias enim accusantium, <a href="">suscipit </a>iste necessitatibus temporibus. Sequi in adipisci, quia illum unde, nostrum aut natus veritatis sunt, labore animi quasi facilis, quidem eius.</p>
+		<p>Ipsa amet cupiditate natus debitis incidunt sint sed corrupti libero numquam nesciunt mollitia, magnam ullam eius id. Voluptatibus <a href="">suscipit quis nihil delectus </a>eaque sunt laudantium odit quis nihil delectus, maxime atque eum iusto ducimus, ea voluptate, beatae, distinctio reprehenderit!</p>
+		<p>Eius error impedit voluptatum, consequuntur officia suscipit aspernatur vitae expedita reprehenderit, <a href="">suscipit </a>doloremque animi odit omnis quam tempore maiores. Iste, ad, tempore. Ab nihil possimus, fugit, amet <a href="">suscipit </a>aspernatur sint!</p>
+	</div>
+
+<script>
+	const triggers = document.querySelectorAll('a');
+	const highlight = document.createElement('span');
+	highlight.classList.add('highlight');
+	document.body.append(highlight);
+
+	function highlightLink() {
+		const linkCoords = this.getBoundingClientRect();
+		const coords = {
+			width: linkCoords.width,
+			height: linkCoords.height,
+			top: linkCoords.top + window.scrollY,
+			left: linkCoords.left + window.scrollX
+		}
+
+		highlight.style.width = `${coords.width}px`;
+		highlight.style.height = `${coords.height}px`;
+		highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+	}
+
+	triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
+
+</script>
+
+</body>
+</html>
