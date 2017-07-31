@@ -32,11 +32,15 @@
     </div>
   </div>
 
-  <button onClick="startGame()" id="start">Start!</button>
+  <h1 class="countdown"></h1>
+
+  <button onClick="countdown()" id="start">Start!</button>
 <script>
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
+  const countD = document.querySelector('.countdown');
+
   let lastHole;
   let timeUp = false;
   let score = 0;
@@ -78,6 +82,29 @@
     score++;
     this.classList.remove('up');
     scoreBoard.textContent = score;
+  }
+
+  function countdown(e) {
+    clearInterval(countdown);
+    let time = 3;
+    timer = setInterval(() => {
+      const secondsLeft = time--;
+      countD.classList.add('activate');
+      countD.textContent = secondsLeft;
+
+      if (time === -1) {
+        countD.classList.add('scale');
+        countD.textContent = 'start';
+      }
+      if (time < -1) {
+        clearInterval(timer);
+        startGame();
+        countD.classList.remove('.scale');
+        countD.classList.remove('activate');
+        return;
+      }
+      // console.log(time)
+    }, 1000);
   }
 
   moles.forEach(mole => mole.addEventListener('click', bonk));

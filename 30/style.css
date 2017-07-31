@@ -19,6 +19,7 @@ h1 {
   font-size: 10rem;
   line-height:1;
   margin-bottom: 0;
+  user-select: none;
 }
 
 .score {
@@ -26,6 +27,30 @@ h1 {
   padding:0 3rem;
   line-height:1;
   border-radius:1rem;
+}
+
+.countdown {
+  display: none;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin: -200px 0 0 -200px;
+  font-size: 300px;
+  font-weight: 600;
+  z-index: 2;
+  text-shadow: 2px 3px 2px crimson;
+}
+
+.activate {
+  display: inherit;
+}
+
+.scale {
+  transform: scale(1.2);
+  transition: 0.5s;
 }
 
 .game {
